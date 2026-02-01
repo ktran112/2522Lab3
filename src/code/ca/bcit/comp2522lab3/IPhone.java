@@ -15,9 +15,32 @@ public class IPhone extends IDevice
                   final String carrier)
     {
         super(purpose);
+
+        validateMinLeftOnPhonePlan(minLeftOnPhonePlan);
+        validateCarrier(carrier);
+
         this.minLeftOnPhonePlan = minLeftOnPhonePlan;
         this.carrier = carrier;
     }
+
+    private void validateMinLeftOnPhonePlan(final double minLeftOnPhonePlan)
+    {
+        if (minLeftOnPhonePlan < 0)
+        {
+            throw new IllegalArgumentException("Cannot have negative minutes on phone plan");  // Okay maybe you can have a negative value,
+        }                                                                                      // considering that you would likely just get charged
+    }                                                                                          // for every minute beyond your given plan length
+
+    private void validateCarrier(final String carrier)
+    {
+        if (carrier == null || carrier.isBlank())
+        {
+            throw new IllegalArgumentException("Must have a phone carrier");
+        }
+    }
+
+
+
 
     @Override
     void printDetails()

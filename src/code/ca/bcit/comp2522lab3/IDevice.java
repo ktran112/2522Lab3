@@ -14,7 +14,18 @@ abstract class IDevice
     private final String purpose;
 
     IDevice(final String purpose) {
+
+        validatePurpose(purpose);
+
         this.purpose = purpose;
+    }
+
+    private void validatePurpose(String purpose)
+    {
+        if (purpose == null || purpose.isBlank())
+        {
+            throw new IllegalArgumentException("Must have a purpose");
+        }
     }
 
     public final String getPurpose()

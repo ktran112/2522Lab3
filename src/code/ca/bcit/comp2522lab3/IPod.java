@@ -13,9 +13,24 @@ public class IPod extends IDevice
                 final double maxVolumeDecibels)
     {
         super(purpose);
+
+        validateSongsStored(songsStored);
+
         this.songsStored = songsStored;
         this.maxVolumeDecibels = maxVolumeDecibels;
     }
+
+    private void validateSongsStored(final int songsStored)
+    {
+        if (songsStored < 0)
+        {
+            throw new IllegalArgumentException("Cannot have negative songs stored");
+        }
+    }
+
+    // I was considering a validate dB method that didn't allow values below or beyond the min and max possible dB on Earth, but seemed redundant
+
+
 
     @Override
     void printDetails()

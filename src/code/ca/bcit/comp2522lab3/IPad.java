@@ -15,9 +15,22 @@ public class IPad extends IDevice
                 final String operatingSystem)
     {
         super(purpose);
+
+        validateOperatingSystem(operatingSystem);
+
         this.hasCase = hasCase;
         this.operatingSystem = operatingSystem;
     }
+
+    private void validateOperatingSystem(String operatingSystem)
+    {
+        if (operatingSystem == null || operatingSystem.isBlank())
+        {
+            throw new IllegalArgumentException("Must have an operating system");
+        }
+    }
+
+
 
     @Override
     void printDetails()
