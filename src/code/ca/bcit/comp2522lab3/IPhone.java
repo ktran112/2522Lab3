@@ -17,16 +17,23 @@ public class IPhone extends IDevice
         super(purpose);
 
         validateMinLeftOnPhonePlan(minLeftOnPhonePlan);
+<<<<<<< HEAD
+=======
+        validateCarrier(carrier);
+>>>>>>> c71097654b9367f47b87d4a13aa6d9374e673108
 
         this.minLeftOnPhonePlan = minLeftOnPhonePlan;
         this.carrier = carrier;
     }
 
+<<<<<<< HEAD
     public IPhone(final double minLeftOnPhonePlan)
     {
         this(minLeftOnPhonePlan, null);
     }
 
+=======
+>>>>>>> c71097654b9367f47b87d4a13aa6d9374e673108
     private void validateMinLeftOnPhonePlan(final double minLeftOnPhonePlan)
     {
         if (minLeftOnPhonePlan < 0)
@@ -35,6 +42,20 @@ public class IPhone extends IDevice
         }                                                                                      // considering that you would likely just get charged
     }                                                                                          // for every minute beyond your given plan length
 
+<<<<<<< HEAD
+=======
+    private void validateCarrier(final String carrier)
+    {
+        if (carrier == null || carrier.isBlank())
+        {
+            throw new IllegalArgumentException("Must have a phone carrier");
+        }
+    }
+
+
+
+
+>>>>>>> c71097654b9367f47b87d4a13aa6d9374e673108
     @Override
     void printDetails()
     {

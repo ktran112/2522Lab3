@@ -13,8 +13,13 @@ abstract class IDevice
 {
     private final String purpose;
 
+<<<<<<< HEAD
     IDevice(final String purpose)
     {
+=======
+    IDevice(final String purpose) {
+
+>>>>>>> c71097654b9367f47b87d4a13aa6d9374e673108
         validatePurpose(purpose);
 
         this.purpose = purpose;
