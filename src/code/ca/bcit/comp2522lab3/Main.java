@@ -79,6 +79,7 @@ public class Main {
 
         {
             System.out.println("CORRECT: ipad1 is equal to ipad3");
+
         }
 
         else

@@ -30,11 +30,6 @@ public class IPad extends IDevice
         }
     }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c71097654b9367f47b87d4a13aa6d9374e673108
     @Override
     void printDetails()
     {
