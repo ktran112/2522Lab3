@@ -13,6 +13,10 @@ abstract class IDevice
 {
     private final String purpose;
 
+    /**
+     * Creates a device with a purpose.
+     * @param purpose the device's main use
+     */
     IDevice(final String purpose)
     {
         validatePurpose(purpose);
@@ -28,13 +32,24 @@ abstract class IDevice
         }
     }
 
+    /**
+     * Returns the device's purpose.
+     * @return description of the purpose
+     */
     public final String getPurpose()
     {
         return "The purpose of this IDevice is \"" + purpose + "\"";
     }
 
+    /**
+     * Prints details of the device.
+     */
     abstract void printDetails();
 
+    /**
+     * Returns device info as a string.
+     * @return purpose string
+     */
     @Override
     public String toString()
     {

@@ -2,6 +2,14 @@ package ca.bcit.comp2522lab3;
 
 import java.util.Objects;
 
+/**
+ * Represents a basic iPhone device.
+ *
+ * @author Tommy White
+ * @author Kiet Tran
+ *
+ * @version 1.0
+ */
 public class IPhone extends IDevice
 {
 
@@ -11,6 +19,11 @@ public class IPhone extends IDevice
 
     private String carrier;
 
+    /**
+     * Creates an iPhone with minutes and carrier.
+     * @param minLeftOnPhonePlan minutes remaining
+     * @param carrier service provider
+     */
     public IPhone(final double minLeftOnPhonePlan,
                   final String carrier)
     {
@@ -22,7 +35,10 @@ public class IPhone extends IDevice
         this.carrier = carrier;
     }
 
-
+    /**
+     * Creates an iPhone with minutes only.
+     * @param minLeftOnPhonePlan minutes remaining
+     */
     public IPhone(final double minLeftOnPhonePlan)
     {
         this(minLeftOnPhonePlan, null);
@@ -38,32 +54,47 @@ public class IPhone extends IDevice
         }                                                                                      // considering that you would likely just get charged
     }
 
+    /**
+     * Prints device details.
+     */
     @Override
     void printDetails()
     {
         System.out.println("Time left on phone plan: " +
-                           minLeftOnPhonePlan +
-                           " minutes\n" +
-                           "Carrier: " +
-                           carrier);
+                minLeftOnPhonePlan +
+                " minutes\n" +
+                "Carrier: " +
+                carrier);
     }
 
+    /**
+     * Returns device details as a string.
+     * @return formatted string
+     */
     @Override
     public String toString()
     {
         return super.toString() + "\n" +
-               "Time left on phone plan: " +
-               minLeftOnPhonePlan +
-               " minutes\n" +
-               "Carrier: " +
-               carrier;
+                "Time left on phone plan: " +
+                minLeftOnPhonePlan +
+                " minutes\n" +
+                "Carrier: " +
+                carrier;
     }
 
+    /**
+     * Gets minutes remaining.
+     * @return minutes
+     */
     public final double getMinLeftOnPhonePlan()
     {
         return minLeftOnPhonePlan;
     }
 
+    /**
+     * Gets carrier name.
+     * @return carrier
+     */
     public final String getCarrier()
     {
         return carrier;
@@ -87,6 +118,11 @@ public class IPhone extends IDevice
         this.carrier = carrier;
     }
 
+    /**
+     * Compares this phone to another object.
+     * @param obj object to compare
+     * @return true if minutes match
+     */
     @Override
     public boolean equals(final Object obj)
     {
@@ -104,6 +140,10 @@ public class IPhone extends IDevice
         return Double.compare(other.minLeftOnPhonePlan, minLeftOnPhonePlan) == 0;
     }
 
+    /**
+     * Gets hash code based on minutes.
+     * @return hash code
+     */
     @Override
     public int hashCode()
     {
