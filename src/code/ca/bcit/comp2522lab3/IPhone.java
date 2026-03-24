@@ -12,47 +12,53 @@ import java.util.Objects;
  */
 public class IPhone extends IDevice
 {
+    private static final int MIN_MINUTES_LEFT_ON_PHONE = 0;
 
     private static final String purpose = "talking";
 
-    private double minLeftOnPhonePlan;
+    private double minutesLeftOnPhonePlan;
 
     private String carrier;
 
     /**
      * Creates an iPhone with minutes and carrier.
      *
-     * @param minLeftOnPhonePlan minutes remaining
+     * @param minutesLeftOnPhonePlan minutes remaining
      * @param carrier service provider
      */
-    public IPhone(final double minLeftOnPhonePlan,
+    public IPhone(final double minutesLeftOnPhonePlan,
                   final String carrier)
     {
         super(purpose);
 
-        validateMinLeftOnPhonePlan(minLeftOnPhonePlan);
+        validateMinutesLeftOnPhonePlan(minutesLeftOnPhonePlan);
 
-        this.minLeftOnPhonePlan = minLeftOnPhonePlan;
+        this.minutesLeftOnPhonePlan = minutesLeftOnPhonePlan;
         this.carrier = carrier;
     }
 
     /**
      * Creates an iPhone with minutes only.
      *
-     * @param minLeftOnPhonePlan minutes remaining
+     * @param minutesLeftOnPhonePlan minutes remaining
      */
-    public IPhone(final double minLeftOnPhonePlan)
+    public IPhone(final double minutesLeftOnPhonePlan)
     {
-        this(minLeftOnPhonePlan, null);
+        this(minutesLeftOnPhonePlan, null);
     }
 
-
-
-    private void validateMinLeftOnPhonePlan(final double minLeftOnPhonePlan)
+    /*
+     * Validates the Minutes Left on Phone Plan.
+     * Constraints:
+     * - Cannot be lesser that minimum minutes left on phone
+     *
+     * @param purpose The purpose to be validated
+     */
+    private static void validateMinutesLeftOnPhonePlan(final double minutesLeftOnPhonePlan)
     {
-        if (minLeftOnPhonePlan < 0)
+        if (minutesLeftOnPhonePlan < MIN_MINUTES_LEFT_ON_PHONE)
         {
-            throw new IllegalArgumentException("Cannot have negative minutes on phone plan");
+            throw new IllegalArgumentException("Cannot have less than minimum minutes on phone plan");
         }
     }
 
@@ -63,7 +69,7 @@ public class IPhone extends IDevice
     void printDetails()
     {
         System.out.println("Time left on phone plan: " +
-                minLeftOnPhonePlan +
+                minutesLeftOnPhonePlan +
                 " minutes\n" +
                 "Carrier: " +
                 carrier);
@@ -79,7 +85,7 @@ public class IPhone extends IDevice
     {
         return super.toString() + "\n" +
                 "Time left on phone plan: " +
-                minLeftOnPhonePlan +
+                minutesLeftOnPhonePlan +
                 " minutes\n" +
                 "Carrier: " +
                 carrier;
@@ -90,9 +96,9 @@ public class IPhone extends IDevice
      *
      * @return minutes
      */
-    public final double getMinLeftOnPhonePlan()
+    public final double getMinutesLeftOnPhonePlan()
     {
-        return minLeftOnPhonePlan;
+        return minutesLeftOnPhonePlan;
     }
 
     /**
@@ -105,13 +111,18 @@ public class IPhone extends IDevice
         return carrier;
     }
 
-    private void setMinLeftOnPhonePlan(final int minLeftOnPhonePlan)
+    /*
+     * Setter for minutes left on phone plan.
+     *
+     * @param minutesLeftOnPhonePlan The new value for the minutes left on phone plan
+     */
+    private final void setMinutesLeftOnPhonePlan(final int minutesLeftOnPhonePlan)
     {
-        if (minLeftOnPhonePlan < 0)
+        if (minutesLeftOnPhonePlan < MIN_MINUTES_LEFT_ON_PHONE)
         {
-            throw new IllegalArgumentException("Number of minutes cannot be negative");
+            throw new IllegalArgumentException("Number of minutes cannot be lesser than minimum.");
         }
-        this.minLeftOnPhonePlan = minLeftOnPhonePlan;
+        this.minutesLeftOnPhonePlan = minutesLeftOnPhonePlan;
     }
 
     /**
@@ -119,7 +130,7 @@ public class IPhone extends IDevice
      *
      * @param carrier the new carrier
      */
-    public void setCarrier(final String carrier)
+    public final void setCarrier(final String carrier)
     {
         if (carrier.isBlank())
         {
@@ -152,7 +163,7 @@ public class IPhone extends IDevice
 
         that = (IPhone) obj;
 
-        return this.minLeftOnPhonePlan == that.minLeftOnPhonePlan;
+        return this.minutesLeftOnPhonePlan == that.minutesLeftOnPhonePlan;
     }
 
     /**
@@ -163,7 +174,7 @@ public class IPhone extends IDevice
     @Override
     public int hashCode()
     {
-        return Objects.hash(minLeftOnPhonePlan);
+        return Objects.hash(minutesLeftOnPhonePlan);
     }
 
 

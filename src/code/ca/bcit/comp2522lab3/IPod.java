@@ -36,15 +36,20 @@ public class IPod extends IDevice
         this.maxVolumeDecibels = maxVolumeDecibels;
     }
 
+    /*
+     * Validates songs stored.
+     * Constraints:
+     * - Cannot be lesser than minimum
+     *
+     * @param purpose The purpose to be validated
+     */
     private void validateSongsStored(final int songsStored)
     {
         if (songsStored < MIN_SONGS_STORED)
         {
-            throw new IllegalArgumentException("Cannot have negative songs stored");
+            throw new IllegalArgumentException("Cannot have less than minimum songs stored");
         }
     }
-
-    // I was considering a validate dB method that didn't allow values below or beyond the min and max possible dB on Earth, but seemed redundant
 
     /**
      * Prints iPod details.
@@ -96,6 +101,7 @@ public class IPod extends IDevice
 
     /**
      * Returns details as a string.
+     *
      * @return formatted string
      */
     @Override
@@ -111,6 +117,7 @@ public class IPod extends IDevice
 
     /**
      * Gets number of songs stored.
+     *
      * @return song count
      */
     public final int getSongsStored()
@@ -120,6 +127,7 @@ public class IPod extends IDevice
 
     /**
      * Gets maximum volume.
+     *
      * @return decibel level
      */
     public final double getMaxVolumeDecibels()
@@ -130,9 +138,9 @@ public class IPod extends IDevice
     /**
      * Set the amount of songs stored/
      *
-     * @param songsStored
+     * @param songsStored number of stored songs
      */
-    public void setSongsStored(final int songsStored)
+    public final void setSongsStored(final int songsStored)
     {
         if (songsStored < MIN_SONGS_STORED)
         {
@@ -141,7 +149,12 @@ public class IPod extends IDevice
         this.songsStored = songsStored;
     }
 
-    private void setMaxVolumeDecibels(final double maxVolumeDecibels)
+    /*
+     * Setter for max volume (in decibels).
+     *
+     * @param New value for decibels
+     */
+    private final void setMaxVolumeDecibels(final double maxVolumeDecibels)
     {
         if (maxVolumeDecibels < MIN_VOLUME_DB)
         {

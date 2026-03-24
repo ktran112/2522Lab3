@@ -1,22 +1,33 @@
 package ca.bcit.comp2522lab3;
 
+/**
+ * Main method that drives the program.
+ *
+ * @author Kiet Tran
+ * @author Tommy White
+ *
+ * @version 1.0
+ */
 public class Main {
+
+    /**
+     * Driver method.
+     *
+     * @param args unused
+     */
     public static void main(final String[] args) {
 
-        // Create IPod objects
         final IPod ipod1;
         final IPod ipod2;
         final IPod ipod3;
 
         ipod1 = new IPod(300,
-                80.0);    // 300 songs, max volume 80.0 dB
+                80.0);
         ipod2 = new IPod(400,
-                85.0);    // 400 songs, max volume 85.0 dB
+                85.0);
         ipod3 = new IPod(300,
-                70.0);    // 300 songs, max volume 70.0 dB
+                70.0);
 
-
-        // Test equality and inequality for IPod
         System.out.println("IPod Equality Test:");
 
         if (!ipod1.equals(ipod2))
@@ -45,9 +56,6 @@ public class Main {
 
         System.out.println();
 
-
-
-        // Create IPad objects
         final IPad ipad1;
         final IPad ipad2;
         final IPad ipad3;
@@ -59,8 +67,6 @@ public class Main {
         ipad3 = new IPad(true,
                 "iPadOS 15");
 
-
-        // Test equality and inequality for IPad
         System.out.println("IPad Equality Test:");
 
         if (!ipad1.equals(ipad2))
@@ -90,22 +96,17 @@ public class Main {
 
         System.out.println();
 
-
-
-        // Create IPhone objects
         final IPhone iphone1;
         final IPhone iphone2;
         final IPhone iphone3;
 
         iphone1 = new IPhone(120.0,
-                "Verizon");   // 120 minutes, carrier Verizon
+                "Verizon");
         iphone2 = new IPhone(180.0,
-                "T-Mobile");  // 180 minutes, carrier T-Mobile
+                "T-Mobile");
         iphone3 = new IPhone(120.0,
-                "AT&T");      // 120 minutes, carrier AT&T
+                "AT&T");
 
-
-        // Test equality and inequality for IPhone
         System.out.println("IPhone Equality Test:");
 
         if (!iphone1.equals(iphone2))
@@ -134,27 +135,22 @@ public class Main {
 
         System.out.println();
 
-
-
-        // Create IPhone17 objects
         final IPhone17 iphone17_1;
         final IPhone17 iphone17_2;
         final IPhone17 iphone17_3;
 
         iphone17_1 = new IPhone17(100.0,
                 "Verizon", true,
-                512);   // 100 minutes, high-res camera, 512 GB
+                512);
         iphone17_2 = new IPhone17(100.0,
                 "Verizon",
                 true,
-                256);   // 100 minutes, high-res camera, 256 GB
+                256);
         iphone17_3 = new IPhone17(100.0,
                 "Verizon",
                 false,
-                512);  // 100 minutes, no high-res camera, 512 GB
+                512);
 
-
-        // Test equality and inequality for IPhone17
         System.out.println("IPhone17 Equality Test:");
 
         if (iphone17_1.equals(iphone17_2))

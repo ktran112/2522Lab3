@@ -15,6 +15,7 @@ abstract class IDevice
 
     /**
      * Creates a device with a purpose.
+     *
      * @param purpose the device's main use
      */
     IDevice(final String purpose)
@@ -24,6 +25,14 @@ abstract class IDevice
         this.purpose = purpose;
     }
 
+    /*
+     * Validates purpose.
+     * Constraints:
+     * - Cannot be null
+     * - Cannot be blank
+     *
+     * @param purpose The purpose to be validated
+     */
     private void validatePurpose(String purpose)
     {
         if (purpose == null)

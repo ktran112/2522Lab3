@@ -15,7 +15,7 @@ public class IPhone17 extends IPhone
     private static final double MIN_MEMORY_GB = 0;
 
     private final boolean highResCamera;
-    private double memoryGb;
+    private double memoryGB;
 
     /**
      * Constructs an IPhone17 with all specified details.
@@ -23,44 +23,53 @@ public class IPhone17 extends IPhone
      * @param minLeftOnPhonePlan minutes remaining on the plan
      * @param carrier the service provider
      * @param highResCamera true if it has a high-res camera
-     * @param memoryGb memory in gigabytes
+     * @param memoryGB memory in gigabytes
      */
     public IPhone17(final double minLeftOnPhonePlan,
                     final String carrier,
                     final boolean highResCamera,
-                    double memoryGb)
+                    double memoryGB)
     {
         super(minLeftOnPhonePlan, carrier);
 
-        validateMemoryGb(memoryGb);
+        validateMemoryGB(memoryGB);
 
         this.highResCamera = highResCamera;
-        this.memoryGb = memoryGb;
+        this.memoryGB = memoryGB;
     }
 
     /**
      * Constructs an IPhone17 with a standard camera by default.
+     *
      * @param minLeftOnPhonePlan minutes remaining on the plan
      * @param carrier the service provider
-     * @param memoryGb memory in gigabytes
+     * @param memoryGB memory in gigabytes
      */
     public IPhone17(final double minLeftOnPhonePlan,
                     final String carrier,
-                    int memoryGb)
+                    int memoryGB)
     {
-        this(minLeftOnPhonePlan, carrier, false, memoryGb);
+        this(minLeftOnPhonePlan, carrier, false, memoryGB);
     }
 
-    private void validateMemoryGb(final double memoryGb)
+    /*
+     * Validates memory (in Gigabytes).
+     * Constraints:
+     * - Cannot lesser than minimum memory (in Gigabytes)
+     *
+     * @param purpose The purpose to be validated
+     */
+    private void validateMemoryGB(final double memoryGB)
     {
-        if (memoryGb < MIN_MEMORY_GB)
+        if (memoryGB < MIN_MEMORY_GB)
         {
-            throw new IllegalArgumentException("Cannot have negative memory");
+            throw new IllegalArgumentException("Cannot have less than the minimum memory");
         }
     }
 
     /**
      * Returns a string representation of the iPhone 17.
+     *
      * @return details of the iPhone 17
      */
     @Override
@@ -70,20 +79,22 @@ public class IPhone17 extends IPhone
                 "\nHigh Resolution Camera: " +
                 this.highResCamera +
                 "\nMemory in gigabytes: " +
-                   this.memoryGb;
+                   this.memoryGB;
     }
 
     /**
      * Returns the amount of memory in gigabytes.
-     * @return this.memoryGb memory in gigabytes
+     *
+     * @return this.memoryGB memory in gigabytes
      */
-    public final double getMemoryGb()
+    public final double getMemoryGB()
     {
-        return this.memoryGb;
+        return this.memoryGB;
     }
 
     /**
      * Returns if the iPhone 17 has a high resolution camera.
+     *
      * @return this.highResCamera
      */
     public final boolean getHighResCamera()
@@ -91,13 +102,19 @@ public class IPhone17 extends IPhone
         return this.highResCamera;
     }
 
-    private final void setMemoryGb(final double memoryGb)
+    /*
+     * Setter for memory (In gigabytes).
+     *
+     * @param memoryGB New value for memory
+     */
+    private final void setMemoryGB(final double memoryGB)
     {
-        this.memoryGb = memoryGb;
+        this.memoryGB = memoryGB;
     }
 
     /**
      * Compares this iPhone 17 to another object for equality.
+     *
      * @param obj the object to compare
      * @return true if minutes left and camera resolution match
      */
@@ -117,18 +134,19 @@ public class IPhone17 extends IPhone
         final IPhone17 that;
         that = (IPhone17) obj;
 
-        return Objects.equals(this.getMinLeftOnPhonePlan(), that.getMinLeftOnPhonePlan())
+        return Objects.equals(this.getMinutesLeftOnPhonePlan(), that.getMinutesLeftOnPhonePlan())
                 && Objects.equals(this.highResCamera, that.highResCamera);
     }
 
     /**
      * Generates a hash code for this iPhone 17.
-     * * @return integer hash code
+     *
+     * @return integer hash code
      */
     @Override
     public final int hashCode()
     {
-        return Double.hashCode(this.getMinLeftOnPhonePlan()
+        return Double.hashCode(this.getMinutesLeftOnPhonePlan()
                 + Boolean.hashCode(this.highResCamera));
     }
 }

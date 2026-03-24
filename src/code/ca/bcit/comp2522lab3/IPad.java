@@ -36,6 +36,14 @@ public class IPad extends IDevice
         this.operatingSystem = operatingSystem;
     }
 
+    /*
+     * Validates Operating System.
+     * Constraints:
+     * - Cannot be null
+     * - Cannot be blank
+     *
+     * @param operatingSystem The operating system to be validated
+     */
     private static void validateOperatingSystem(String operatingSystem)
     {
         if (operatingSystem == null)
@@ -101,7 +109,7 @@ public class IPad extends IDevice
      *
      * @param hasCase true or false, whether wanting to put on case
      */
-    public void setHasCase(final boolean hasCase)
+    public final void setHasCase(final boolean hasCase)
     {
         this.hasCase = hasCase;
     }
@@ -111,7 +119,7 @@ public class IPad extends IDevice
      *
      * @param operatingSystem the new operating system
      */
-    public void setOperatingSystem(final String operatingSystem)
+    public final void setOperatingSystem(final String operatingSystem)
     {
         if (operatingSystem.isBlank())
         {
