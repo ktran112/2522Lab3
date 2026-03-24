@@ -21,6 +21,7 @@ public class IPad extends IDevice
 
     /**
      * Creates an iPad with case status and OS.
+     *
      * @param hasCase if device has a case
      * @param operatingSystem type of OS
      */
@@ -35,9 +36,14 @@ public class IPad extends IDevice
         this.operatingSystem = operatingSystem;
     }
 
-    private void validateOperatingSystem(String operatingSystem)
+    private static void validateOperatingSystem(String operatingSystem)
     {
-        if (operatingSystem == null || operatingSystem.isBlank())
+        if (operatingSystem == null)
+        {
+            throw new IllegalArgumentException("Operating system cannot be null");
+        }
+
+        if (operatingSystem.isBlank())
         {
             throw new IllegalArgumentException("Must have an operating system");
         }
@@ -57,13 +63,14 @@ public class IPad extends IDevice
 
     /**
      * Returns details as a string.
+     *
      * @return formatted string
      */
     @Override
     public String toString()
     {
-        return super.toString() + "\n" +
-                "Has a case: " +
+        return super.toString() +
+                "\nHas a case: " +
                 hasCase +
                 "\nOperating System: " +
                 operatingSystem;
@@ -71,6 +78,7 @@ public class IPad extends IDevice
 
     /**
      * Checks if device has a case.
+     *
      * @return true if it has a case
      */
     public final boolean getHasCase()
@@ -80,6 +88,7 @@ public class IPad extends IDevice
 
     /**
      * Gets the operating system.
+     *
      * @return OS name
      */
     public final String getOperatingSystem()
@@ -87,44 +96,61 @@ public class IPad extends IDevice
         return operatingSystem;
     }
 
-    private void setHasCase(final boolean hasCase)
+    /**
+     * Add or remove case to iPad.
+     *
+     * @param hasCase true or false, whether wanting to put on case
+     */
+    public void setHasCase(final boolean hasCase)
     {
         this.hasCase = hasCase;
     }
 
-    private void setOperatingSystem(final String operatingSystem)
+    /**
+     * Change operating system of iPad.
+     *
+     * @param operatingSystem the new operating system
+     */
+    public void setOperatingSystem(final String operatingSystem)
     {
-        if (Objects.equals(operatingSystem, ""))
+        if (operatingSystem.isBlank())
         {
             throw new IllegalArgumentException("Operating System cannot be left blank");
         }
+
         this.operatingSystem = operatingSystem;
     }
 
     /**
      * Compares this iPad to another object.
+     *
      * @param obj object to compare
+     *
      * @return true if OS matches
      */
     @Override
     public boolean equals(final Object obj)
     {
-        if (this == obj)
-        {
-            return true;
-        }
-
-        if (obj == null || getClass() != obj.getClass())
+        if (obj == null)
         {
             return false;
         }
 
-        final IPad other = (IPad) obj;
-        return Objects.equals(operatingSystem, other.operatingSystem);
+        if (!(obj instanceof IPad))
+        {
+            return false;
+        }
+
+        final IPad that;
+
+        that = (IPad) obj;
+
+        return this.operatingSystem.equals(that.operatingSystem);
     }
 
     /**
      * Gets hash code based on OS.
+     *
      * @return hash code
      */
     @Override

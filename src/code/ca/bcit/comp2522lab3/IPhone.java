@@ -21,6 +21,7 @@ public class IPhone extends IDevice
 
     /**
      * Creates an iPhone with minutes and carrier.
+     *
      * @param minLeftOnPhonePlan minutes remaining
      * @param carrier service provider
      */
@@ -37,6 +38,7 @@ public class IPhone extends IDevice
 
     /**
      * Creates an iPhone with minutes only.
+     *
      * @param minLeftOnPhonePlan minutes remaining
      */
     public IPhone(final double minLeftOnPhonePlan)
@@ -50,8 +52,8 @@ public class IPhone extends IDevice
     {
         if (minLeftOnPhonePlan < 0)
         {
-            throw new IllegalArgumentException("Cannot have negative minutes on phone plan");  // Okay maybe you can have a negative value,
-        }                                                                                      // considering that you would likely just get charged
+            throw new IllegalArgumentException("Cannot have negative minutes on phone plan");
+        }
     }
 
     /**
@@ -69,6 +71,7 @@ public class IPhone extends IDevice
 
     /**
      * Returns device details as a string.
+     *
      * @return formatted string
      */
     @Override
@@ -84,6 +87,7 @@ public class IPhone extends IDevice
 
     /**
      * Gets minutes remaining.
+     *
      * @return minutes
      */
     public final double getMinLeftOnPhonePlan()
@@ -93,6 +97,7 @@ public class IPhone extends IDevice
 
     /**
      * Gets carrier name.
+     *
      * @return carrier
      */
     public final String getCarrier()
@@ -109,9 +114,14 @@ public class IPhone extends IDevice
         this.minLeftOnPhonePlan = minLeftOnPhonePlan;
     }
 
-    private void setCarrier(final String carrier)
+    /**
+     * Changes the phone's carrier.
+     *
+     * @param carrier the new carrier
+     */
+    public void setCarrier(final String carrier)
     {
-        if (Objects.equals(carrier, ""))
+        if (carrier.isBlank())
         {
             throw new IllegalArgumentException("Carrier cannot be left blank");
         }
@@ -120,28 +130,34 @@ public class IPhone extends IDevice
 
     /**
      * Compares this phone to another object.
+     *
      * @param obj object to compare
+     *
      * @return true if minutes match
      */
     @Override
     public boolean equals(final Object obj)
     {
-        if (this == obj)
-        {
-            return true;
-        }
-
-        if (obj == null || getClass() != obj.getClass())
+        if (obj == null)
         {
             return false;
         }
 
-        final IPhone other = (IPhone) obj;
-        return Double.compare(other.minLeftOnPhonePlan, minLeftOnPhonePlan) == 0;
+        if (!(obj instanceof IPhone))
+        {
+            return false;
+        }
+
+        final IPhone that;
+
+        that = (IPhone) obj;
+
+        return this.minLeftOnPhonePlan == that.minLeftOnPhonePlan;
     }
 
     /**
      * Gets hash code based on minutes.
+     *
      * @return hash code
      */
     @Override

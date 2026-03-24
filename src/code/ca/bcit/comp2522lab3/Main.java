@@ -53,11 +53,11 @@ public class Main {
         final IPad ipad3;
 
         ipad1 = new IPad(true,
-                "iPadOS 15");   // Has case, OS version iPadOS 15
+                "iPadOS 15");
         ipad2 = new IPad(false,
-                "iPadOS 14");  // No case, OS version iPadOS 14
+                "iPadOS 14");
         ipad3 = new IPad(true,
-                "iPadOS 15");   // Has case, OS version iPadOS 15
+                "iPadOS 15");
 
 
         // Test equality and inequality for IPad

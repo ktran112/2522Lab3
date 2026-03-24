@@ -12,6 +12,8 @@ public class IPod extends IDevice
 {
 
     private static final String purpose = "music";
+    private static final int MIN_SONGS_STORED = 0;
+    private static final int MIN_VOLUME_DB = 0;
 
     private int songsStored;
 
@@ -19,6 +21,7 @@ public class IPod extends IDevice
 
     /**
      * Creates an iPod with song count and volume limit.
+     *
      * @param songsStored number of songs
      * @param maxVolumeDecibels maximum volume in dB
      */
@@ -35,7 +38,7 @@ public class IPod extends IDevice
 
     private void validateSongsStored(final int songsStored)
     {
-        if (songsStored < 0)
+        if (songsStored < MIN_SONGS_STORED)
         {
             throw new IllegalArgumentException("Cannot have negative songs stored");
         }
@@ -58,7 +61,9 @@ public class IPod extends IDevice
 
     /**
      * Compares this iPod to another object.
+     *
      * @param obj object to compare
+     *
      * @return true if song counts match
      */
     @Override
@@ -80,6 +85,7 @@ public class IPod extends IDevice
 
     /**
      * Gets hash code based on song count.
+     *
      * @return hash code
      */
     @Override
@@ -121,20 +127,25 @@ public class IPod extends IDevice
         return maxVolumeDecibels;
     }
 
-    private void setSongsStored(final int songsStored)
+    /**
+     * Set the amount of songs stored/
+     *
+     * @param songsStored
+     */
+    public void setSongsStored(final int songsStored)
     {
-        if (songsStored < 0)
+        if (songsStored < MIN_SONGS_STORED)
         {
-            throw new IllegalArgumentException("Number of songs cannot be negative");
+            throw new IllegalArgumentException("Number of songs cannot be below minimum songs stored: " + MIN_SONGS_STORED);
         }
         this.songsStored = songsStored;
     }
 
     private void setMaxVolumeDecibels(final double maxVolumeDecibels)
     {
-        if (maxVolumeDecibels < 0)
+        if (maxVolumeDecibels < MIN_VOLUME_DB)
         {
-            throw new IllegalArgumentException("Volume cannot be negative");
+            throw new IllegalArgumentException("Volume cannot be below minimum: " + MIN_VOLUME_DB);
         }
         this.maxVolumeDecibels = maxVolumeDecibels;
     }

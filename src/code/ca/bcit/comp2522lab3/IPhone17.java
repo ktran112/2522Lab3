@@ -12,11 +12,14 @@ import java.util.Objects;
  */
 public class IPhone17 extends IPhone
 {
+    private static final double MIN_MEMORY_GB = 0;
+
     private final boolean highResCamera;
     private double memoryGb;
 
     /**
      * Constructs an IPhone17 with all specified details.
+     *
      * @param minLeftOnPhonePlan minutes remaining on the plan
      * @param carrier the service provider
      * @param highResCamera true if it has a high-res camera
@@ -25,10 +28,12 @@ public class IPhone17 extends IPhone
     public IPhone17(final double minLeftOnPhonePlan,
                     final String carrier,
                     final boolean highResCamera,
-                    int memoryGb)
+                    double memoryGb)
     {
         super(minLeftOnPhonePlan, carrier);
+
         validateMemoryGb(memoryGb);
+
         this.highResCamera = highResCamera;
         this.memoryGb = memoryGb;
     }
@@ -46,9 +51,9 @@ public class IPhone17 extends IPhone
         this(minLeftOnPhonePlan, carrier, false, memoryGb);
     }
 
-    private void validateMemoryGb(final int memoryGb)
+    private void validateMemoryGb(final double memoryGb)
     {
-        if (memoryGb < 0)
+        if (memoryGb < MIN_MEMORY_GB)
         {
             throw new IllegalArgumentException("Cannot have negative memory");
         }
@@ -61,11 +66,11 @@ public class IPhone17 extends IPhone
     @Override
     public final String toString()
     {
-        return super.toString()
-                + "\nHigh Resolution Camera: "
-                + this.highResCamera
-                + "\nMemory in gigabytes: "
-                + this.memoryGb;
+        return super.toString() +
+                "\nHigh Resolution Camera: " +
+                this.highResCamera +
+                "\nMemory in gigabytes: " +
+                   this.memoryGb;
     }
 
     /**

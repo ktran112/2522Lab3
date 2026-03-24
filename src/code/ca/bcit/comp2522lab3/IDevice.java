@@ -26,14 +26,20 @@ abstract class IDevice
 
     private void validatePurpose(String purpose)
     {
-        if (purpose == null || purpose.isBlank())
+        if (purpose == null)
         {
-            throw new IllegalArgumentException("Must have a purpose");
+            throw new IllegalArgumentException("Purpose cannot be null.");
+        }
+
+        if (purpose.isBlank())
+        {
+            throw new IllegalArgumentException("Purpose cannot be blank");
         }
     }
 
     /**
      * Returns the device's purpose.
+     *
      * @return description of the purpose
      */
     public final String getPurpose()
@@ -48,6 +54,7 @@ abstract class IDevice
 
     /**
      * Returns device info as a string.
+     *
      * @return purpose string
      */
     @Override
